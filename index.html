@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swiper Dual Background</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+ 
+  <!-- Styles en CSS -->
+ <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f1fd5;
+      height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: 50%;
+      height: 100vh;
+      background: #003399;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      background-size: cover;
+      background-position: center;
+    }
+    .carousel-container {
+      width: 50%;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .swiper {
+      width: 450px;
+    }
+    .swiper-slide {
+    width: 100%;
+    color: white;
+    border-radius: 24px;
+    box-shadow: rgba(0, 0, 0, 10%) 5px 5px 20px 0;
+    padding: 20px;
+    font-size: xx-large;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    &:nth-child(1)  {   
+        background: #797979;
+    }
+    &:nth-child(2) {
+        background: #5d34f2;
+    }
+    &:nth-child(3) {
+        background: #4300da;
+    }
+      /* background: #ebebeb;
+      border-radius: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px; */
+    }
+    .arrow{
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-top: 3px solid white;
+        border-right: 3px solid white;
+        transform: rotate(45deg);
+        position: absolute;
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: #001E77;
+      width: 45px;
+      height: 45px;
+      background-color: #003399;
+      margin: -15px;
+      padding: 12px;
+      border-radius: 50px;
+      font-size: 11px;
+      line-height: 32px;
+      text-transform: uppercase;
+      float: left;
+      text-decoration: none;
+    }
+    .swiper-button-next:hover, .swiper-button-prev:hover {
+      opacity: 0.50;  
+      color: #FF0033;
+      filter: alpha(opacity=50);
+    }
+    .swiper-pagination-progressbar-fill {
+      background: #FF0033 !important;
+    }
+  </style>
+</head>
+
+<!-- contenido del carruzel -->
+<body>
+  <div class="sidebar" id="background"></div>
+  <div class="carousel-container">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" data-bg="image1.jpg">Imagen1</div>
+        <div class="swiper-slide" data-bg="image2.jpg">Imagen 2</div>
+        <div class="swiper-slide" data-bg="image3.jpg">Imagen 3</div>
+      </div>
+      <div class="swiper-button-next"></div> /*cambia los div por button*/
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+        type: "progressbar",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      on: {
+        slideChange: function () {
+          let activeSlide = document.querySelector('.swiper-slide-active');
+          let newBg = activeSlide.getAttribute('data-bg');
+          document.getElementById('background').style.backgroundImage = `url(${newBg})`;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
