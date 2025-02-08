@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
  
   <!-- Styles en CSS -->
- <style>
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -18,84 +18,101 @@
       background: #0f1fd5;
       height: 100vh;
       display: flex;
+      overflow: hidden;
     }
     .sidebar {
       width: 50%;
       height: 100vh;
       background: #003399;
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 1;
+      position: relative;
       background-size: cover;
       background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 20px;
+    }
+    .sidebar h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .sidebar p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .sidebar button {
+      background-color: #001E77;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background-color 0.3s;
+    }
+    .sidebar button.active {
+      background-color: #FF0033;
+    }
+    .sidebar button:hover {
+      background-color: #FF0033;
     }
     .carousel-container {
       width: 50%;
-      margin-left: auto;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      position: relative;
     }
     .swiper {
       width: 450px;
-    }
-    .swiper-slide {
-    width: 100%;
-    color: white;
-    border-radius: 24px;
-    box-shadow: rgba(0, 0, 0, 10%) 5px 5px 20px 0;
-    padding: 20px;
-    font-size: xx-large;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    &:nth-child(1)  {   
-        background: #797979;
-    }
-    &:nth-child(2) {
-        background: #5d34f2;
-    }
-    &:nth-child(3) {
-        background: #4300da;
-    }
-      /* background: #ebebeb;
-      border-radius: 24px;
-      text-align: center;
+      height: 100%;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px; */
     }
-    .arrow{
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        border-top: 3px solid white;
-        border-right: 3px solid white;
-        transform: rotate(45deg);
-        position: absolute;
+    .swiper-slide {
+      width: 100%;
+      color: white;
+      border-radius: 24px;
+      box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 20px 0;
+      padding: 20px;
+      font-size: xx-large;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+    .swiper-slide:nth-child(1) {
+      background: #797979;
+    }
+    .swiper-slide:nth-child(2) {
+      background: #5d34f2;
+    }
+    .swiper-slide:nth-child(3) {
+      background: #4300da;
     }
     .swiper-button-next, .swiper-button-prev {
       color: #001E77;
       width: 45px;
       height: 45px;
       background-color: #003399;
-      margin: -15px;
-      padding: 12px;
-      border-radius: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 11px;
-      line-height: 32px;
       text-transform: uppercase;
-      float: left;
       text-decoration: none;
+      transition: opacity 0.3s;
     }
     .swiper-button-next:hover, .swiper-button-prev:hover {
-      opacity: 0.50;  
+      opacity: 0.50;
       color: #FF0033;
-      filter: alpha(opacity=50);
     }
     .swiper-pagination-progressbar-fill {
       background: #FF0033 !important;
@@ -103,18 +120,23 @@
   </style>
 </head>
 
-<!-- contenido del carruzel -->
+<!-- Contenido del carrusel -->
 <body>
-  <div class="sidebar" id="background"></div>
+  <div class="sidebar" id="background">
+    <h1>MOTOCARROS</h1>
+    <p>A 2 km de un distribuidor</p>
+    <button class="active">EXPLORA →</button>
+    <button>EXPLORA →</button>
+  </div>
   <div class="carousel-container">
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" data-bg="image1.jpg">Imagen1</div>
+        <div class="swiper-slide" data-bg="image1.jpg">Imagen 1</div>
         <div class="swiper-slide" data-bg="image2.jpg">Imagen 2</div>
         <div class="swiper-slide" data-bg="image3.jpg">Imagen 3</div>
       </div>
-      <div class="swiper-button-next"></div> /*cambia los div por button*/
-      <div class="swiper-button-prev"></div>
+      <button class="swiper-button-next"></button>
+      <button class="swiper-button-prev"></button>
       <div class="swiper-pagination"></div>
     </div>
   </div>
